@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { ReactNode } from "react";
 import { Toaster } from "sonner";
 import Navbar from "@/components/Navbar";
+import { GridBackground } from "@/components/GridBackground";
 
 async function AuthLayout({ children }: { children: ReactNode }) {
   const isAuth = await isAuthenticated();
@@ -12,10 +13,10 @@ async function AuthLayout({ children }: { children: ReactNode }) {
   return (
     <div className="flex flex-col min-h-screen bg-gray-50">
       <Navbar />
-      <div className="flex-1 flex items-center justify-center py-10 px-4">
+      <GridBackground>
         {children}
         <Toaster position="top-center" />
-      </div>
+      </GridBackground>
     </div>
   );
 }

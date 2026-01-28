@@ -112,7 +112,7 @@ function AuthForm({ type }: { type: FormType }) {
         <div className="pt-8 pb-4 px-8 text-center bg-white">
             <div className="flex items-center justify-center gap-3 mb-2">
                 <div className="p-2 rounded-lg border-2 border-black bg-primary flex items-center justify-center">
-                  <Swords className="w-8 h-8 text-white" />
+                  <Swords className="w-8 h-8 text-black fill-white" />
                 </div>
                 <h1 className="text-4xl font-black text-black uppercase tracking-tight">ESPADAS</h1>
             </div>

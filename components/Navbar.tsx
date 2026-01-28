@@ -34,7 +34,7 @@ const Navbar = () => {
         <div className="flex h-16 items-center px-6 w-full justify-between relative">
           <Link href="/" className="flex items-center gap-2 font-black text-xl hover:scale-105 transition-transform">
             <div className="relative h-10 w-10 overflow-hidden rounded-lg border-2 border-black bg-primary flex items-center justify-center">
-              <Swords className="w-6 h-6 text-black" />
+              <Swords className="w-6 h-6 text-black fill-white" />
             </div>
             <span className="text-black text-2xl tracking-tight">Espadas</span>
           </Link>

@@ -17,7 +17,7 @@ const Footer = () => {
           <div className="space-y-4">
             <div className="flex items-center gap-2">
               <div className="relative h-10 w-10 overflow-hidden rounded-lg border-2 border-black bg-primary shrink-0 flex items-center justify-center">
-                <Swords className="w-6 h-6 text-black" />
+                <Swords className="w-6 h-6 text-black fill-white" />
               </div>
               <span className="text-xl font-black text-black">Espadas</span>
             </div>
