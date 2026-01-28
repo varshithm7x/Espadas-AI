@@ -49,7 +49,7 @@ const Navbar = () => {
                 <LogoutButton />
               ) : (
                 <Link href="/sign-in">
-                  <Button className="font-bold border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] bg-primary text-white hover:bg-primary/90 rounded-lg">Sign In</Button>
+                  <Button className="font-bold border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all bg-primary text-white hover:bg-primary/90 rounded-lg">Sign In</Button>
                 </Link>
               )
             )}
@@ -97,7 +97,7 @@ const Navbar = () => {
                     <LogoutButton />
                   ) : (
                     <Link href="/sign-in" onClick={() => setIsMobileMenuOpen(false)} className="w-full">
-                      <Button className="w-full font-bold border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:shadow-none active:translate-x-[4px] active:translate-y-[4px] transition-all bg-primary text-white hover:bg-primary/90 rounded-lg h-12">Sign In</Button>
+                      <Button className="w-full font-bold border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all bg-primary text-white hover:bg-primary/90 rounded-lg h-12">Sign In</Button>
                     </Link>
                   )
                 )}

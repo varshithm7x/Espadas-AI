@@ -105,80 +105,106 @@ function AuthForm({ type }: { type: FormType }) {
   }
 
   return (
-    <div className="card-border lg:min-w-[566px]">
-      <div className="flex flex-col gap-6 card py-14 px-10">
-        <div className="flex flex-row items-center gap-2 justify-center">
-            <div className="p-2 rounded-lg border-2 border-black bg-primary flex items-center justify-center">
-              <Swords className="w-6 h-6 text-black" />
+    <div className="w-full max-w-[500px] mx-auto">
+      <div className="bg-white border-2 border-black rounded-xl shadow-[8px_8px_0px_0px_#000] overflow-hidden">
+        
+        {/* Header Section */}
+        <div className="pt-8 pb-4 px-8 text-center bg-white">
+            <div className="flex items-center justify-center gap-3 mb-2">
+                <div className="p-2 rounded-lg border-2 border-black bg-primary flex items-center justify-center">
+                  <Swords className="w-8 h-8 text-white" />
+                </div>
+                <h1 className="text-4xl font-black text-black uppercase tracking-tight">ESPADAS</h1>
             </div>
-          <h2 className="text-primary-100">Espadas</h2>
+            <h2 className="text-lg font-bold text-black">Practice Job Interviews with AI</h2>
         </div>
+        
+        {/* Divider */}
+        <div className="w-full border-t-2 border-black"></div>
 
-        <h3>Practice job interviews with AI</h3>
-
-        <Form {...form}>
-          <form
-            onSubmit={form.handleSubmit(onSubmit)}
-            className="w-full space-y-6 mt-4 form"
-          >
-            {!isSignIn && (
-              <FormField
+        {/* Form Section */}
+        <div className="p-8 bg-white">
+            <Form {...form}>
+            <form
+                onSubmit={form.handleSubmit(onSubmit)}
+                className="w-full space-y-6"
+            >
+                {!isSignIn && (
+                <FormField
+                    control={form.control}
+                    name="name"
+                    render={({ field }) => (
+                    <FormItem>
+                        <FormLabel className="text-lg font-black text-black">Name:</FormLabel>
+                        <FormControl>
+                        <Input 
+                            placeholder="John Doe"
+                            className="text-xl font-bold placeholder:text-gray-500 placeholder:font-normal border-2 border-black rounded-lg h-14 text-black focus-visible:ring-0 focus-visible:shadow-[4px_4px_0px_0px_#000] transition-all bg-blue-50" 
+                            {...field} 
+                            type="text" 
+                        />
+                        </FormControl>
+                        <FormMessage />
+                    </FormItem>
+                    )}
+                />
+                )}
+                <FormField
                 control={form.control}
-                name="name"
+                name="email"
                 render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="label">Name</FormLabel>
+                    <FormItem>
+                    <FormLabel className="text-lg font-black text-black">Email:</FormLabel>
                     <FormControl>
-                      <Input className="input" {...field} type="text" />
+                        <Input 
+                            placeholder="mail@example.com"
+                            className="text-xl font-bold placeholder:text-gray-500 placeholder:font-normal border-2 border-black rounded-lg h-14 text-black focus-visible:ring-0 focus-visible:shadow-[4px_4px_0px_0px_#000] transition-all bg-blue-50" 
+                            {...field} 
+                            type="email" 
+                        />
                     </FormControl>
                     <FormMessage />
-                  </FormItem>
+                    </FormItem>
                 )}
-              />
-            )}
-            <FormField
-              control={form.control}
-              name="email"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="label">Email</FormLabel>
-                  <FormControl>
-                    <Input className="input" {...field} type="email" />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="password"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="label">Password</FormLabel>
-                  <FormControl>
-                    <Input className="input" {...field} type="password" />
-                  </FormControl>
+                />
+                <FormField
+                control={form.control}
+                name="password"
+                render={({ field }) => (
+                    <FormItem>
+                    <FormLabel className="text-lg font-black text-black">Password:</FormLabel>
+                    <FormControl>
+                        <Input 
+                            placeholder="••••••••"
+                            className="text-xl font-bold placeholder:text-gray-500 placeholder:font-normal border-2 border-black rounded-lg h-14 text-black focus-visible:ring-0 focus-visible:shadow-[4px_4px_0px_0px_#000] transition-all bg-blue-50" 
+                            {...field} 
+                            type="password" 
+                        />
+                    </FormControl>
 
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+                    <FormMessage />
+                    </FormItem>
+                )}
+                />
 
-            <Button className="btn" type="submit">
-              {isSignIn ? "Sign In" : "Create an Account"}
-            </Button>
-          </form>
-        </Form>
+                <div className="flex justify-center pt-4">
+                    <Button className="bg-primary text-white hover:bg-primary/90 text-lg font-bold py-6 px-12 rounded-lg border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all" type="submit">
+                         {isSignIn ? "Sign In" : "Sign Up"}
+                    </Button>
+                </div>
+            </form>
+            </Form>
 
-        <p className="text-center">
-          {isSignIn ? "No account yet?" : "Have an account already?"}
-          <Link
-            href={!isSignIn ? "/sign-in" : "/sign-up"}
-            className="font-bold text-user-primary ml-1"
-          >
-            {!isSignIn ? "Sign In" : "Sign Up"}
-          </Link>
-        </p>
+            <div className="mt-8 text-center text-black font-bold text-lg">
+                 {isSignIn ? "No Account Yet? " : "Have an account already? "}
+                <Link
+                    href={!isSignIn ? "/sign-in" : "/sign-up"}
+                    className="hover:underline"
+                >
+                    {!isSignIn ? "Sign In" : "Sign Up"}
+                </Link>
+            </div>
+        </div>
       </div>
     </div>
   );

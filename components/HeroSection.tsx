@@ -1,4 +1,4 @@
-"use client";
+  "use client";
 
 import React, { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -7,7 +7,6 @@ import GetStartedButton from "@/components/GetStartedButton";
 const HeroSection = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const containerRef = useRef<HTMLElement>(null);
-
   const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
     if (containerRef.current) {
       const rect = containerRef.current.getBoundingClientRect();

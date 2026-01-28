@@ -147,16 +147,16 @@ export default function RecentCallData() {
               </div>
               
               <div className="space-y-1 mb-3 text-xs">
-                <p className="text-gray-600 font-medium">
+                <p className="text-gray-900 font-bold">
                   {new Date(call.startedAt).toLocaleDateString()}
                 </p>
               </div>
 
               <div className="flex justify-between items-center">
-                <div className="text-gray-400 text-xs">
+                <div className="text-gray-700 font-medium text-xs">
                   {call.messageCount || 0} messages
                 </div>
-                <div className="text-primary-200 text-xs">
+                <div className="text-primary font-bold text-xs">
                   View Details →
                 </div>
               </div>
