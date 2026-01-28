@@ -56,8 +56,8 @@
 ### **1. Clone & Install**
 ```bash
 # Clone the repository
-git clone https://github.com/BigJoe17/BohdAi.git
-cd BohdAi
+git clone https://github.com/varshithm7x/Espadas-AI
+cd Espadas-AI
 
 # Install dependencies
 npm install
