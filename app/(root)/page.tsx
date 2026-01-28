@@ -23,9 +23,9 @@ const HomePage = () => {
       <div className="relative z-10 bg-white py-20">
         <div className="mx-auto px-6 max-w-7xl w-full">
           {/* CTA Section */}
-          <section className="bg-primary/5 rounded-xl border-2 border-black p-8 md:p-12 shadow-neobrutal mb-20">
-            <div className="flex flex-col md:flex-row items-center gap-12">
-              <div className="flex-1 space-y-6">
+          <section className="bg-primary/5 rounded-xl border-2 border-black p-4 md:p-6 shadow-neobrutal mb-20">
+            <div className="flex flex-col md:flex-row items-center gap-8">
+              <div className="flex-1 space-y-4">
                  <h2 className="text-4xl font-black uppercase tracking-tight">Get Interview Ready</h2>
                  <p className="text-xl font-medium text-gray-700">
                    Practice on real Interview questions & get instant feedback. 
@@ -40,13 +40,13 @@ const HomePage = () => {
                     </div>
                  </div>
               </div>
-              <div className="flex-1 flex justify-center">
+              <div className="flex-1 flex justify-center items-center h-[260px] overflow-hidden">
                 <Image
-                  src={"/robot.png"}
-                  width={350}
-                  height={350}
+                  src={"/OJZ2JZ0.png"}
+                  width={420}
+                  height={420}
                   alt="robot"
-                  className="drop-shadow-[8px_8px_0px_rgba(0,0,0,1)]"
+                  className="drop-shadow-[8px_8px_0px_rgba(0,0,0,1)] object-cover"
                 />
               </div>
             </div>
