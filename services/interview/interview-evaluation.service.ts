@@ -45,11 +45,11 @@ class InterviewEvaluationService {
     } else {
       try {
         this.genAI = new GoogleGenerativeAI(apiKey);
-        // Use gemini-2.5-flash for reliable access
+        // Use gemini-2.5-flash
         this.model = this.genAI.getGenerativeModel({ 
           model: 'gemini-2.5-flash',
           generationConfig: {
-            maxOutputTokens: 2048,
+            maxOutputTokens: 8192,
             temperature: 0.1,
           },
         });
@@ -98,13 +98,32 @@ class InterviewEvaluationService {
       const result = await this.model.generateContent(prompt);
       const response = result.response.text();
       
-      // Parse JSON response
-      const jsonMatch = response.match(/\{[\s\S]*\}/);
-      if (!jsonMatch) {
-        throw new Error('Invalid response format from Gemini AI');
+      // Extract JSON object directly from response (ignoring markdown fences)
+      const firstBrace = response.indexOf('{');
+      const lastBrace = response.lastIndexOf('}');
+      
+      if (firstBrace === -1 || lastBrace === -1) {
+        console.error('Gemini Raw Response (No JSON found):', response);
+        // Fallback: If no JSON found, throw specific error with preview of response
+        const preview = response.substring(0, 200);
+        throw new Error(`Invalid response format from Gemini AI: No JSON object found. Response preview: ${preview}...`);
       }
+      
+      let jsonString = response.substring(firstBrace, lastBrace + 1);
+      
+      // Attempt to clean common JSON errors
+      // 1. Remove trailing commas before closing braces/brackets
+      jsonString = jsonString.replace(/,(\s*[}\]])/g, '$1');
 
-      const evaluation = JSON.parse(jsonMatch[0]);
+      let evaluation: any;
+      try {
+        evaluation = JSON.parse(jsonString);
+      } catch (parseError) {
+        console.error('JSON Parse Error:', parseError);
+        console.error('Raw Response:', response);
+        console.error('Extracted JSON String:', jsonString);
+        throw new Error(`Failed to parse evaluation JSON. Error: ${(parseError as Error).message}. Snippet: ${jsonString.substring(0, 150)}...`);
+      }
       
       // Validate and sanitize the evaluation
       return this.validateEvaluation(evaluation);
@@ -226,9 +245,9 @@ RECOMMENDATIONS:
 - "No Hire": Below expectations (Overall 4-6.4)
 - "Strong No Hire": Poor performance (Overall 1-3.9)
 
-Analyze the transcript thoroughly and provide specific evidence for each rating. Be objective and constructive in your feedback.
+Analyze the transcript thoroughly and provide specific evidence for each rating. Be objective and constructive in your feedback. Keep the "detailedFeedback" section concise (under 200 words) to ensure valid JSON output.
 
-Return ONLY the JSON object, no additional text.
+Return ONLY the JSON object, no additional text. Ensure the JSON is valid standard JSON (no trailing commas, keys in double quotes).
     `;
   }
 
